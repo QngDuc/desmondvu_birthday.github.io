@@ -1,0 +1,8 @@
+{
+  "name": "desmond-birthday-flip",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check app.js && node --check focus.js && node --check phone-scene.js && node tests/model-check.mjs && node tests/interaction-check.mjs"
+  }
+}
