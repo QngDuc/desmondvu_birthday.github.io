@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Desmond · A little birthday universe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#">d<span>✳</span></a
+      ><span>A LITTLE BIRTHDAY UNIVERSE</span
+      ><button id="model">Về chiếc điện thoại ↗</button>
+    </header>
+    <main>
+      <section class="intro">
+        <div class="eyebrow"><span></span> MADE WITH LOVE, JUST FOR YOU</div>
+        <h1>Thêm một tuổi.<br />Thêm một <em>vũ trụ.</em></h1>
+        <p>
+          Một chiếc điện thoại nhỏ, chứa những điều thật lớn.<br />Mở ra nhé —
+          hôm nay là ngày của bạn.
+        </p>
+        <div class="dedication">
+          Happy birthday,<br /><strong>Desmond<span>♡</span></strong>
+        </div>
+        <span class="note">01 / MỘT MÓN QUÀ TRONG TÚI</span>
+      </section>
+      <section class="experience" aria-label="Điện thoại sinh nhật tương tác">
+        <span class="orbit o1"></span><span class="orbit o2"></span
+        ><span class="spark s1">✳</span><span class="spark s2">✧</span>
+        <div class="stage" id="stage" aria-label="Model Galaxy Z Flip 7 3D">
+          <div class="load-state" id="load-state" role="status">Đang mở món quà…</div>
+          <div class="phone-display" id="phone-display" hidden>
+            <div class="status"><span>09:41</span><span>▴ ▰ 100%</span></div>
+            <div id="app"></div>
+            <nav class="dock" aria-label="App điện thoại">
+              <button data-app="home" aria-label="Trang chủ">⌂</button>
+              <button data-app="wishes" aria-label="Lời chúc">♡</button>
+              <button data-app="art" aria-label="Fan art">▧</button>
+            </nav><span class="display-camera" aria-hidden="true"></span>
+          </div>
+          <button class="cover-display" id="cover-display" hidden aria-label="Chạm để mở điện thoại"><span>09:41</span><b>HAPPY BIRTHDAY ♡</b><small>Chạm để mở món quà ↗</small></button>
+        </div>
+        <div class="controls">
+          <button id="rotate" aria-label="Xoay điện thoại" title="Xoay điện thoại" aria-pressed="false" disabled><span aria-hidden="true">↔</span><span class="control-label"> Xoay điện thoại</span></button>
+          <button id="fold" aria-label="Gập điện thoại" title="Gập điện thoại" aria-pressed="false" disabled><span aria-hidden="true">◫</span><span class="control-label"> Gập lại</span></button>
+          <button id="reset" aria-label="Đặt lại góc nhìn" title="Đặt lại góc nhìn" disabled>↺</button>
+        </div>
+        <p class="hint" id="hint">Chạm vào một app để mở món quà</p>
+      </section>
+    </main>
+    <footer>
+      <span>A SMALL PHONE. A WHOLE LOT OF LOVE.</span
+      ><span>Khám phá từng chút một <span class="coral">✦</span></span>
+    </footer>
+    <div id="focus-shell" class="focus-shell" role="dialog" aria-modal="true" aria-label="Khám phá điện thoại sinh nhật" hidden><button id="focus-dismiss" class="focus-dismiss" aria-label="Trở lại trang sinh nhật" title="Trở lại · Esc">×</button></div>
+    <dialog id="viewer"><button id="close">Đóng ✕</button><h2>Chiếc điện thoại của món quà</h2><p>Model Galaxy Z Flip 7 của <a href="https://sketchfab.com/zhe_kan" target="_blank" rel="noreferrer">zhe_kan</a>, được tải từ file GLB bạn cung cấp. Giao diện sinh nhật và thao tác gập được thêm vào model.</p><p><a href="https://skfb.ly/pLxPW" target="_blank" rel="noreferrer">Xem model gốc trên Sketchfab ↗</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 4.0</a>.</p></dialog>
+    <script src="app.js"></script>
+    <script src="focus.js"></script>
+    <script type="module" src="phone-scene.js"></script>
+  </body>
+</html>
