@@ -2,3 +2,7 @@ site.tar.gz
 samsung-galaxy-z-flip-7/
 .sites-runtime/
 node_modules/
+
+# Private originals; optimized assets/fan-art/ remains tracked for deployment.
+/fanart/
+/lời chúc.txt

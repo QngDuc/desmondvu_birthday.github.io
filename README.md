@@ -1,13 +1,68 @@
 # Birthday Flip
 
-Trang sinh nhật tĩnh bằng HTML/CSS/JS. Chạy `python -m http.server 8080` trong thư mục dự án rồi mở http://localhost:8080.
+Trang sinh nhật tương tác bằng HTML, CSS và JavaScript thuần, dành tặng anh
+Híu (Desmond Vũ). Nội dung gồm 48 lời chúc cộng đồng, một mục riêng cho lời
+chúc từ modders, 9 món fan art (ảnh/GIF) và một video lời chúc; tên người gửi
+được ghi nhận trong từng thẻ.
 
-Thư mục gốc là nguồn website duy nhất; các file HTML, CSS, JavaScript, assets và thư viện dùng trực tiếp từ đây. Điện thoại được render từ `assets/galaxy-z-flip-7.glb` bằng Three.js (WebGL). Các app HTML được gắn vào mặt màn hình bằng CSS3DRenderer, cùng camera và biến đổi với model. Bản lề điều khiển nửa trên của model; màn hình ngoài có thể chạm để mở lại. Model bao gồm hai bản điện thoại, chỉ bản có hai nửa tách rời được sử dụng. Không cần nhúng Sketchfab hoặc tải thư viện từ CDN khi chạy.
+## Chạy và kiểm tra
 
-Model gốc: SAMSUNG Galaxy Z Flip 7 của zhe_kan — https://skfb.ly/pLxPW — CC BY-NC-SA 4.0. Model và các sửa đổi model tuân theo giấy phép này. Three.js 0.170.0 được lưu trong `vendor` cùng MIT LICENSE; đường dẫn import được đổi thành đường dẫn tương đối.
+Chạy server trong thư mục dự án rồi mở `http://localhost:8080`:
 
-Kiểm tra: `npm run check`. Kiểm tra hình học GLB xác nhận bản lề, tỷ lệ màn hình và thao tác gập/mở; phần giải mã ảnh được giả lập trong kiểm tra Node, nên không thay thế kiểm tra hình ảnh/WebGL trong trình duyệt.
+```sh
+python -m http.server 8080
+```
 
-Thay lời chúc trong `app.js` (mảng wishes). Tên Desmond lấy theo thư mục dự án; có thể sửa trong `index.html` và `app.js`.
- 
-Chạm vào thân máy hoặc màn hình để vào chế độ tập trung: phần chữ ngoài máy dạt ra và điện thoại chuyển vào giữa cửa sổ. Bấm × hoặc Esc để trở lại. Nội dung hiện có hai lời chúc và hai ảnh minh họa anime mẫu do AI tạo, lưu trong `assets/fan-art-*.png`; thay ảnh trong mảng `artworks` của `app.js`.
+```sh
+npm run check
+```
+
+Kiểm tra xác nhận nội dung, file media thực sự tồn tại và dung lượng gallery;
+kiểm thử model và tương tác. Kiểm tra Node không thay thế kiểm thử WebGL trong
+trình duyệt.
+
+## Build và triển khai
+
+Mã nguồn website nằm ở thư mục gốc. GitHub Pages hiện phục vụ bản ở thư mục gốc
+của nhánh `main`. Cấu hình `.openai/hosting.json` lại trỏ static hosting vào
+`dist/`; tạo bản triển khai đầy đủ cho cấu hình đó bằng:
+
+```sh
+npm run build
+```
+
+Lệnh build sao chép HTML, CSS, JavaScript, model và thư viện cục bộ vào `dist/`.
+Chạy `npm run build` sau mỗi lần cập nhật trước khi triển khai qua hosting dùng
+`dist/`.
+
+## Nội dung và tài nguyên
+
+- Lời chúc hiển thị và ghi công người gửi nằm trong `content.js`. Mục cộng đồng
+  và mục modders được tách riêng; chỉ những người được xác định rõ là mod mới
+  xuất hiện trong mục modders. Một số đoạn riêng tư, câu đùa quá cá nhân và
+  nội dung lời bài hát đã được lược khỏi bản công khai.
+- Khung lời chúc cuộn riêng, còn tiêu đề và nút chuyển lời nhắn luôn ở vị trí
+  cố định để dễ đọc trên điện thoại; vùng cuộn cũng dùng được bằng bàn phím.
+- Hướng dẫn sử dụng tự hiện trong lần truy cập đầu tiên; đóng lại hoặc nhấn nút
+  `?` ở góc màn hình để mở lại bất cứ lúc nào.
+- Fan art đã được chuyển thành các ảnh JPEG kích thước tối ưu trong
+  `assets/fan-art/`; file gốc vẫn được giữ nguyên trong `fanart/`.
+- Model Galaxy Z Flip 7 được tải cục bộ từ `assets/galaxy-z-flip-7.glb`
+  (khoảng 1,4 MB). Các thư viện Three.js cũng nằm trong `vendor/`; không cần
+  nhúng Sketchfab.
+  - Dùng nút `+`/`−` hoặc con lăn chuột để phóng to/thu nhỏ điện thoại. Khi bật
+    chế độ xoay, kéo ngoài màn hình để xoay ngang quanh trục đứng; màn hình và
+    các nút app vẫn tương tác bình thường.
+  - Ngày và giờ hiển thị theo múi giờ Việt Nam. Sinh nhật được tính vào ngày
+  28/10; tuổi tự cập nhật theo năm.
+
+## Ghi công và giấy phép
+
+Model gốc: SAMSUNG Galaxy Z Flip 7 của zhe_kan — <https://skfb.ly/pLxPW> —
+CC BY-NC-SA 4.0. Model và các sửa đổi model được cung cấp theo giấy phép này;
+trang ghi rõ mục đích phi thương mại và giữ liên kết ghi công trong bảng
+thông tin model.
+
+Three.js 0.170.0 được lưu cục bộ theo MIT License; xem
+`vendor/THREE-LICENSE.txt`. Giữ nguyên phần ghi công và thông báo giấy phép khi
+thay đổi model hoặc thư viện.

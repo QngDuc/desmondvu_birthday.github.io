@@ -3,25 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Desmond · A little birthday universe</title>
+    <meta
+      name="description"
+      content="Một món quà sinh nhật nhỏ từ mọi người dành tặng anh Híu: những lời chúc thật, fan art từ cộng đồng và một chiếc Galaxy Z Flip 7 3D."
+    />
+    <meta name="theme-color" content="#f4f3eb" />
+    <link
+      rel="canonical"
+      href="https://qngduc.github.io/desmondvu_birthday.github.io/"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Mừng sinh nhật anh Híu · A little birthday universe"
+    />
+    <meta
+      property="og:description"
+      content="Những lời chúc thật và fan art từ cộng đồng, gửi tặng anh Híu."
+    />
+    <meta
+      property="og:url"
+      content="https://qngduc.github.io/desmondvu_birthday.github.io/"
+    />
+    <meta
+      property="og:image"
+      content="https://qngduc.github.io/desmondvu_birthday.github.io/assets/fan-art/rain.jpg"
+    />
+    <meta property="og:image:width" content="960" />
+    <meta property="og:image:height" content="540" />
+    <meta property="og:image:alt" content="Fan art Desmond Vũ do Rain vẽ." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Anh Híu · A little birthday universe</title>
   </head>
   <body>
     <header>
       <a class="brand" href="#">d<span>✳</span></a
       ><span>A LITTLE BIRTHDAY UNIVERSE</span
-      ><button id="model">Về chiếc điện thoại ↗</button>
+      ><button id="model">Về model ↗</button>
     </header>
     <main>
       <section class="intro">
         <div class="eyebrow"><span></span> MADE WITH LOVE, JUST FOR YOU</div>
-        <h1>Thêm một tuổi.<br />Thêm một <em>vũ trụ.</em></h1>
+        <h1>Mừng sinh nhật,<br /><em>anh Hiếu!</em></h1>
         <p>
-          Một chiếc điện thoại nhỏ, chứa những điều thật lớn.<br />Mở ra nhé —
-          hôm nay là ngày của bạn.
+          Một chiếc điện thoại nhỏ, chứa thật nhiều yêu thương.<br />Mở ra nhé —
+          món quà này là từ mọi người.
         </p>
         <div class="dedication">
-          Happy birthday,<br /><strong>Desmond Vũ<span>♡</span></strong>
+          Happy birthday,<br /><strong>anh Hiếu · Bé Tún cute<span>♡</span></strong>
         </div>
         <span class="note">01 / MỘT MÓN QUÀ TRONG TÚI</span>
       </section>
@@ -30,10 +63,16 @@
         ><span class="spark s1">✳</span><span class="spark s2">✧</span>
         <div class="stage" id="stage" aria-label="Model Galaxy Z Flip 7 3D">
           <div class="load-state" id="load-state" role="status">
-            Đang mở món quà…
+            <span id="load-label">Đang chuẩn bị món quà 3D (1,4 MB)…</span>
+            <progress
+              id="model-progress"
+              max="1"
+              value="0"
+              aria-label="Tiến độ tải mô hình"
+            ></progress>
           </div>
           <div class="phone-display" id="phone-display" hidden>
-            <div class="status"><span>09:41</span><span>▴ ▰ 100%</span></div>
+            <div class="status"><span id="status-time">--:--</span><span>▴ ▰ 100%</span></div>
             <div id="app"></div>
             <nav class="dock" aria-label="App điện thoại">
               <button data-app="home" aria-label="Trang chủ">
@@ -61,11 +100,27 @@
             hidden
             aria-label="Chạm để mở điện thoại"
           >
-            <span>09:41</span><b>HAPPY BIRTHDAY ♡</b
+            <span id="cover-clock">--:--</span><b>HAPPY BIRTHDAY ♡</b
             ><small>Chạm để mở món quà ↗</small>
           </button>
         </div>
         <div class="controls">
+          <button
+            id="zoom-out"
+            aria-label="Thu nhỏ điện thoại"
+            title="Thu nhỏ điện thoại"
+            disabled
+          >
+            −
+          </button>
+          <button
+            id="zoom-in"
+            aria-label="Phóng to điện thoại"
+            title="Phóng to điện thoại"
+            disabled
+          >
+            +
+          </button>
           <button
             id="rotate"
             aria-label="Xoay điện thoại"
@@ -99,9 +154,83 @@
       </section>
     </main>
     <footer>
-      <span>A SMALL PHONE. A WHOLE LOT OF LOVE.</span
-      ><span>Khám phá từng chút một <span class="coral">✦</span></span>
+      <span>A SMALL PHONE. A WHOLE LOT OF LOVE.</span>
+      <span class="non-commercial"
+        >Phi thương mại · Model zhe_kan, CC BY-NC-SA 4.0
+        <span class="coral">✦</span></span
+      >
     </footer>
+    <button
+      class="tutorial-open"
+      id="tutorial-open"
+      type="button"
+      aria-label="Mở hướng dẫn sử dụng"
+      title="Hướng dẫn sử dụng"
+    >
+      ?
+    </button>
+    <dialog
+      class="tutorial-dialog"
+      id="tutorial"
+      aria-labelledby="tutorial-title"
+    >
+      <button
+        class="tutorial-close"
+        id="tutorial-close"
+        type="button"
+        aria-label="Đóng hướng dẫn"
+      >
+        ×
+      </button>
+      <div class="tutorial-kicker">A LITTLE GUIDE ✳</div>
+      <h2 id="tutorial-title">Khám phá món quà</h2>
+      <p class="tutorial-intro">
+        Một vài thao tác nhỏ để mở hết những điều mọi người gửi anh Hiếu.
+      </p>
+      <ol class="tutorial-steps">
+        <li>
+          <span class="tutorial-icon">♡</span>
+          <span>
+            <strong>Đọc lời chúc</strong>
+            <small
+              >Chạm app Lời chúc hoặc Lời chúc modders. Cuộn trong khung để đọc
+              hết; dùng mũi tên hoặc vuốt để chuyển.</small
+            >
+          </span>
+        </li>
+        <li>
+          <span class="tutorial-icon">▧</span>
+          <span>
+            <strong>Xem fan art</strong>
+            <small>Mở app Fan art rồi chạm mũi tên hoặc vuốt để xem từng món quà.</small>
+          </span>
+        </li>
+        <li>
+          <span class="tutorial-icon">↔</span>
+          <span>
+            <strong>Xoay và phóng to</strong>
+            <small
+              >Bật Xoay điện thoại rồi kéo bên ngoài màn hình. Dùng nút +/− hoặc
+              con lăn chuột để zoom.</small
+            >
+          </span>
+        </li>
+        <li>
+          <span class="tutorial-icon">◫</span>
+          <span>
+            <strong>Gập và khám phá</strong>
+            <small
+              >Dùng nút Gập lại để xem màn hình ngoài. Chạm thân máy để vào chế
+              độ tập trung; nhấn × hoặc Esc để trở về.</small
+            >
+          </span>
+        </li>
+      </ol>
+      <button class="tutorial-done" id="tutorial-done" type="button">
+        Bắt đầu khám phá
+      </button>
+      <p class="tutorial-footnote">Bạn có thể mở lại hướng dẫn bằng nút ?</p>
+    </dialog>
     <div
       id="focus-shell"
       class="focus-shell"
@@ -121,7 +250,7 @@
     </div>
     <dialog id="viewer">
       <button id="close">Đóng ✕</button>
-      <h2>Chiếc điện thoại của món quà</h2>
+      <h2>Về chiếc điện thoại</h2>
       <p>
         Model Galaxy Z Flip 7 của
         <a href="https://sketchfab.com/zhe_kan" target="_blank" rel="noreferrer"
@@ -141,7 +270,7 @@
         >.
       </p>
     </dialog>
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
     <script src="focus.js"></script>
     <script type="module" src="phone-scene.js"></script>
   </body>
