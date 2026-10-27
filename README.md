@@ -1,9 +1,19 @@
 # Birthday Flip
 
 Trang sinh nhật tương tác bằng HTML, CSS và JavaScript thuần, dành tặng anh
-Híu (Desmond Vũ). Nội dung gồm 48 lời chúc cộng đồng, một mục riêng cho lời
-chúc từ modders, 9 món fan art (ảnh/GIF) và một video lời chúc; tên người gửi
-được ghi nhận trong từng thẻ.
+Híu (Desmond Vũ). Trang có lời chúc từ cộng đồng và modders, cùng 10 món quà
+fan art (9 ảnh/GIF và một video); tên người gửi được ghi nhận trong từng thẻ.
+
+## Tính năng
+
+- Mô hình Galaxy Z Flip 7 3D có thể xoay, phóng to/thu nhỏ và gập lại.
+- Các app trên điện thoại để đọc lời chúc cộng đồng, lời chúc modders, xem fan
+  art và mở bất ngờ sinh nhật. Lời chúc dài có thể cuộn riêng trong khung đọc.
+- Chạm vào điện thoại để vào chế độ tập trung; nhấn nút đóng hoặc `Esc` để trở
+  lại trang.
+- Hướng dẫn sử dụng tự hiện lần đầu. Đóng hướng dẫn rồi nhấn nút `?` ở góc
+  màn hình để mở lại.
+- Đồng hồ và đếm ngược sinh nhật sử dụng múi giờ Việt Nam.
 
 ## Chạy và kiểm tra
 
@@ -18,8 +28,8 @@ npm run check
 ```
 
 Kiểm tra xác nhận nội dung, file media thực sự tồn tại và dung lượng gallery;
-kiểm thử model và tương tác. Kiểm tra Node không thay thế kiểm thử WebGL trong
-trình duyệt.
+kiểm thử model và tương tác, bao gồm hướng dẫn lần đầu và nút mở lại. Kiểm tra
+Node không thay thế kiểm thử WebGL và tương tác thực tế trong trình duyệt.
 
 ## Build và triển khai
 
@@ -45,16 +55,18 @@ Chạy `npm run build` sau mỗi lần cập nhật trước khi triển khai qu
   cố định để dễ đọc trên điện thoại; vùng cuộn cũng dùng được bằng bàn phím.
 - Hướng dẫn sử dụng tự hiện trong lần truy cập đầu tiên; đóng lại hoặc nhấn nút
   `?` ở góc màn hình để mở lại bất cứ lúc nào.
-- Fan art đã được chuyển thành các ảnh JPEG kích thước tối ưu trong
-  `assets/fan-art/`; file gốc vẫn được giữ nguyên trong `fanart/`.
+- Fan art công khai đã được tối ưu trong `assets/fan-art/`. Các file gốc trong
+  `fanart/` và bản thu thập lời chúc `lời chúc.txt` được Git bỏ qua để giữ riêng
+  tư; chúng vẫn có thể tồn tại trên máy phát triển. Trang dùng nội dung đã
+  biên tập trong `content.js` và media tối ưu, nên không cần các file gốc để
+  build hoặc triển khai.
 - Model Galaxy Z Flip 7 được tải cục bộ từ `assets/galaxy-z-flip-7.glb`
   (khoảng 1,4 MB). Các thư viện Three.js cũng nằm trong `vendor/`; không cần
   nhúng Sketchfab.
-  - Dùng nút `+`/`−` hoặc con lăn chuột để phóng to/thu nhỏ điện thoại. Khi bật
-    chế độ xoay, kéo ngoài màn hình để xoay ngang quanh trục đứng; màn hình và
-    các nút app vẫn tương tác bình thường.
-  - Ngày và giờ hiển thị theo múi giờ Việt Nam. Sinh nhật được tính vào ngày
-  28/10; tuổi tự cập nhật theo năm.
+- Dùng nút `+`/`−` hoặc con lăn chuột để phóng to/thu nhỏ điện thoại. Khi bật
+  chế độ xoay, kéo bên ngoài màn hình để xoay quanh trục đứng; màn hình và các
+  nút app vẫn tương tác bình thường.
+- Sinh nhật được tính vào ngày 28/10; tuổi tự cập nhật theo năm.
 
 ## Ghi công và giấy phép
 
