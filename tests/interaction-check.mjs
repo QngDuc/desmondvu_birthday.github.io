@@ -43,6 +43,13 @@ assert.notEqual(elements['status-time'].textContent, '--:--', 'The phone clock u
 assert.match(elements['birthday-countdown'].textContent, /^(Còn|Hôm nay)/);
 assert(elements['birthday-age'].textContent, 'Birthday age is shown');
 assert(!wishes.some(({ text }) => /Ohio|donate|gaybar|stress/i.test(text)));
+click({ app: 'home' });
+assert.match(elements.app.innerHTML, /class="home-screen"/);
+assert.match(elements.app.innerHTML, /data-app="after-credit"/);
+click({ app: 'after-credit' });
+assert.match(elements.app.innerHTML, /class="after-credit"/);
+assert.match(elements.app.innerHTML, /AFTER CREDIT · 01/);
+assert.match(elements.app.innerHTML, /<h2>[^<]+<\/h2>/);
 click({ app: 'wishes' });
 assert.match(elements.app.innerHTML, /Chúc anh Hiếu sinh nhật thật vui vẻ/);
 assert.match(elements.app.innerHTML, /naxto/);

@@ -10,7 +10,9 @@ fan art (9 ảnh/GIF và một video); tên người gửi được ghi nhận t
   sinh nhật. Có thể bỏ qua video nếu muốn vào hộp quà ngay.
 - Mô hình Galaxy Z Flip 7 3D có thể xoay, phóng to/thu nhỏ và gập lại.
 - Các app trên điện thoại để đọc lời chúc cộng đồng, lời chúc modders, xem fan
-  art và mở bất ngờ sinh nhật. Lời chúc dài có thể cuộn riêng trong khung đọc.
+  art, mở bất ngờ sinh nhật và đọc lời nhắn After credit. Màn hình chính căn
+  giữa đồng hồ, thẻ sinh nhật và lưới ứng dụng. Lời chúc dài có thể cuộn riêng
+  trong khung đọc.
 - Chạm vào điện thoại để vào chế độ tập trung; nhấn nút đóng hoặc `Esc` để trở
   lại trang.
 - Hướng dẫn sử dụng tự hiện lần đầu. Đóng hướng dẫn rồi nhấn nút `?` ở góc

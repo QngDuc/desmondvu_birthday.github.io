@@ -7,14 +7,16 @@ let page = 0,
   current = "home";
 
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (character) =>
-    ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    })[character],
+  return String(value).replace(
+    /[&<>"']/g,
+    (character) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[character],
   );
 }
 
@@ -23,9 +25,7 @@ function title(text) {
 }
 
 function drawWish(wish, index, list, stepAttribute, titleText, description) {
-  return (
-    `<div class="wish-view">${title(titleText)}<article class="letter wish-letter" tabindex="0" aria-label="Nội dung lời chúc"><span class="number">${String(index + 1).padStart(2, "0")} / ${list.length} · ${escapeHtml(titleText.toUpperCase())}</span><h2>Gửi anh Híu,</h2><p>${escapeHtml(wish.text)}</p><span class="wish-from">Thân mến, <strong>${escapeHtml(wish.from)}</strong> ♡</span></article><div class="pager"><button ${stepAttribute}="-1" aria-label="Lời chúc trước">←</button><span>${index + 1} / ${list.length}</span><button ${stepAttribute}="1" aria-label="Lời chúc tiếp">→</button></div><div class="demo">${description} · Cuộn trong khung để đọc hết</div></div>`
-  );
+  return `<div class="wish-view">${title(titleText)}<article class="letter wish-letter" tabindex="0" aria-label="Nội dung lời chúc"><span class="number">${String(index + 1).padStart(2, "0")} / ${list.length} · ${escapeHtml(titleText.toUpperCase())}</span><h2>Gửi anh Híu,</h2><p>${escapeHtml(wish.text)}</p><span class="wish-from">Thân mến, <strong>${escapeHtml(wish.from)}</strong> ♡</span></article><div class="pager"><button ${stepAttribute}="-1" aria-label="Lời chúc trước">←</button><span>${index + 1} / ${list.length}</span><button ${stepAttribute}="1" aria-label="Lời chúc tiếp">→</button></div><div class="demo">${description} · Cuộn trong khung để đọc hết</div></div>`;
 }
 
 function nextBirthday(now) {
@@ -35,14 +35,15 @@ function nextBirthday(now) {
     month: "numeric",
     day: "numeric",
   }).formatToParts(now);
-  const local = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  const local = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
   const year = Number(local.year);
   const month = Number(local.month);
   const day = Number(local.day);
   const isBirthday = month === 10 && day === 28;
-  const birthdayYear = isBirthday || month < 10 || (month === 10 && day < 28)
-    ? year
-    : year + 1;
+  const birthdayYear =
+    isBirthday || month < 10 || (month === 10 && day < 28) ? year : year + 1;
   return {
     age: birthdayYear - 1999,
     isBirthday,
@@ -86,7 +87,7 @@ function updateTime() {
 
 function draw() {
   if (current === "home")
-    app.innerHTML = `<div class="home-time" id="home-clock">--:--</div><div class="home-date">28 THÁNG 10 · MỪNG SINH NHẬT ANH HÍU</div><div class="widget"><small>ANH HÍU · TUỔI <span id="birthday-age">27</span></small><div>Thêm một vũ trụ. ✳</div><p id="birthday-countdown" aria-live="polite"></p></div><div class="apps"><button data-app="wishes"><i>♡</i>Lời chúc</button><button data-app="mod-wishes"><i>✦</i>Lời chúc modders</button><button data-app="art"><i>▧</i>Fan art</button><button data-app="gift"><i>✧</i>Bất ngờ</button></div>`;
+    app.innerHTML = `<div class="home-screen"><div class="home-time" id="home-clock">--:--</div><div class="home-date">28 THÁNG 10 · MỪNG SINH NHẬT ANH HÍU</div><div class="widget"><small>ANH HÍU · TUỔI <span id="birthday-age">27</span></small><div>Thêm một vũ trụ. ✳</div><p id="birthday-countdown" aria-live="polite"></p></div><div class="apps"><button data-app="wishes"><i>♡</i>Lời chúc</button><button data-app="mod-wishes"><i>✦</i>Lời chúc modders</button><button data-app="art"><i>▧</i>Fan art</button><button data-app="gift"><i>✧</i>Bất ngờ</button><button data-app="after-credit"><i>✳</i>After credit</button></div></div>`;
 
   if (current === "wishes") {
     app.innerHTML = drawWish(
@@ -125,6 +126,11 @@ function draw() {
       title("Bất ngờ") +
       `<div class="gift"><button id="celebrate" aria-label="Mở bất ngờ sinh nhật">🎂</button><p>Make a wish.</p><span class="caption">Chạm vào bánh để ăn mừng!</span></div>`;
 
+  if (current === "after-credit")
+    app.innerHTML =
+      title("After credit") +
+      `<div class="after-credit"><span class="after-credit-label">AFTER CREDIT · 01</span><span class="after-credit-star" aria-hidden="true">✳</span><h2>Cảm ơn</h2><p>Mỗi lời chúc, mỗi bức tranh đều góp thành món quà nhỏ này.</p><div class="after-credit-signoff">Cảm ơn anh các page đã hỗ trợ truyền thông:  ♡</div><div class="after-credit-signoff">Táy máy, tỉ mỉ, setup OBS và Desmond Vũ</div><div class="after-credit-signoff">Chốn nhỏ của Chả mực</div><div class="after-credit-signoff">Chất phác thật thà và Nguyndi</div><div class="after-credit-signoff"></div><div class="after-credit-signoff">và Quan Anh</div></div>`;
+
   const homeClock = document.querySelector("#home-clock");
   if (homeClock) homeClock.textContent = vietnamTime(new Date());
 }
@@ -147,7 +153,8 @@ document.addEventListener("click", (event) => {
     draw();
   }
   if (button.dataset.art) {
-    art = (art + Number(button.dataset.art) + artworks.length) % artworks.length;
+    art =
+      (art + Number(button.dataset.art) + artworks.length) % artworks.length;
     draw();
   }
   if (button.id === "celebrate") {
@@ -211,8 +218,12 @@ document.querySelector("#close").onclick = () => viewer.close();
 const tutorial = document.querySelector("#tutorial");
 const tutorialOpen = document.querySelector("#tutorial-open");
 const tutorialClose = () => tutorial.close();
-document.querySelector("#tutorial-close").addEventListener("click", tutorialClose);
-document.querySelector("#tutorial-done").addEventListener("click", tutorialClose);
+document
+  .querySelector("#tutorial-close")
+  .addEventListener("click", tutorialClose);
+document
+  .querySelector("#tutorial-done")
+  .addEventListener("click", tutorialClose);
 tutorialOpen.addEventListener("click", () => tutorial.showModal());
 tutorial.addEventListener("close", () => {
   localStorage.setItem("birthday-tutorial-seen", "true");
