@@ -6,6 +6,8 @@ fan art (9 ảnh/GIF và một video); tên người gửi được ghi nhận t
 
 ## Tính năng
 
+- Mở đầu bằng video; khi video kết thúc, hộp quà xuất hiện. Bấm hộp để mở trang
+  sinh nhật. Có thể bỏ qua video nếu muốn vào hộp quà ngay.
 - Mô hình Galaxy Z Flip 7 3D có thể xoay, phóng to/thu nhỏ và gập lại.
 - Các app trên điện thoại để đọc lời chúc cộng đồng, lời chúc modders, xem fan
   art và mở bất ngờ sinh nhật. Lời chúc dài có thể cuộn riêng trong khung đọc.
@@ -31,6 +33,10 @@ Kiểm tra xác nhận nội dung, file media thực sự tồn tại và dung l
 kiểm thử model và tương tác, bao gồm hướng dẫn lần đầu và nút mở lại. Kiểm tra
 Node không thay thế kiểm thử WebGL và tương tác thực tế trong trình duyệt.
 
+Video mở đầu không được tải trước khi người xem chọn phát. Các app, thư viện 3D
+và model điện thoại chỉ khởi chạy sau khi bấm hộp quà; thao tác bỏ qua video
+không tải file video.
+
 ## Build và triển khai
 
 Mã nguồn website nằm ở thư mục gốc. GitHub Pages hiện phục vụ bản ở thư mục gốc
@@ -41,7 +47,8 @@ của nhánh `main`. Cấu hình `.openai/hosting.json` lại trỏ static hosti
 npm run build
 ```
 
-Lệnh build sao chép HTML, CSS, JavaScript, model và thư viện cục bộ vào `dist/`.
+Lệnh build sao chép HTML, CSS, JavaScript, video mở đầu, model và thư viện cục
+bộ vào `dist/`.
 Chạy `npm run build` sau mỗi lần cập nhật trước khi triển khai qua hosting dùng
 `dist/`.
 

@@ -14,6 +14,8 @@ for (const file of [
   "focus.js",
   "phone-model.js",
   "phone-scene.js",
+  "startup.js",
+  "intro.mp4",
   "favicon.svg",
 ]) {
   await copyFile(join(root, file), join(output, file));

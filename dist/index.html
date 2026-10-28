@@ -40,6 +40,54 @@
     <title>Anh Híu · A little birthday universe</title>
   </head>
   <body>
+    <section class="opening" id="opening" aria-labelledby="opening-title">
+      <div class="opening-card">
+        <div class="opening-kicker">A LITTLE BIRTHDAY SURPRISE ✳</div>
+        <h1 id="opening-title">Một món quà dành tặng<br /><em>anh Hiếu</em></h1>
+        <p class="opening-copy">
+          Xem lời nhắn trước khi mở chiếc hộp nhỏ nhé.
+        </p>
+        <video
+          id="opening-video"
+          data-src="intro.mp4"
+          controls
+          playsinline
+          preload="none"
+          aria-label="Video lời chúc sinh nhật"
+          hidden
+        ></video>
+        <div class="opening-actions" id="opening-actions">
+          <button class="opening-primary" id="play-intro" type="button">
+            Phát video mở quà
+          </button>
+          <button class="opening-skip" id="skip-intro" type="button">
+            Bỏ qua video
+          </button>
+        </div>
+        <div class="gift-reveal" id="gift-reveal" hidden>
+          <button
+            class="gift-box"
+            id="gift-open"
+            type="button"
+            aria-label="Bấm để mở hộp quà và khám phá trang sinh nhật"
+          >
+            <svg viewBox="0 0 120 110" aria-hidden="true">
+              <path class="gift-ribbon" d="M56 34h8v67h-8zM15 48h90v8H15z" />
+              <path class="gift-base" d="M20 53h80v48H20z" />
+              <path class="gift-lid" d="M13 38h94v17H13z" />
+              <path class="gift-bow" d="M60 38C30 35 33 12 47 15c10 2 13 14 13 23Zm0 0c30-3 27-26 13-23-10 2-13 14-13 23Z" />
+            </svg>
+          </button>
+          <h2>Hộp quà đã sẵn sàng</h2>
+          <p>Chạm vào hộp quà để khám phá nhé ♡</p>
+        </div>
+        <p class="opening-status" id="opening-status" role="status" aria-live="polite">
+          Video chỉ bắt đầu tải khi bạn chọn phát.
+        </p>
+      </div>
+    </section>
+    <div id="birthday-site" hidden>
+      <p class="site-status" id="site-status" role="status" aria-live="polite"></p>
     <header>
       <a class="brand" href="#">d<span>✳</span></a
       ><span>A LITTLE BIRTHDAY UNIVERSE</span
@@ -270,8 +318,7 @@
         >.
       </p>
     </dialog>
-    <script type="module" src="app.js"></script>
-    <script src="focus.js"></script>
-    <script type="module" src="phone-scene.js"></script>
+    </div>
+    <script type="module" src="startup.js"></script>
   </body>
 </html>
